@@ -61,6 +61,8 @@
   ul.tips { list-style: none; padding: 0; margin: 0; color: var(--muted); }
   ul.tips li { display: flex; gap: 12px; margin-bottom: 12px; }
   ul.tips li:last-child { margin-bottom: 0; }
+  ul.tips b { color: var(--text); }
+  .note { margin: 0; color: var(--muted); }
   ul.tips li::before { content: "+"; color: var(--green); flex: none; width: 12px; }
   a { color: var(--text); }
   code {
@@ -112,13 +114,29 @@
     </ol>
   </div>
 
+  <h2>// how to use</h2>
+  <div class="box">
+    <ul class="tips">
+      <li><div><b>watch</b>: open Watch, sign in, and pick something to play. Your progress is saved, so you can stop and pick up later on another device.</div></li>
+      <li><div><b>request</b>: want a movie or show that isn't in Jellyfin yet? Open Request, search for it, and click Request. It shows up in Jellyfin once it's ready.</div></li>
+      <li><div><b>read</b>: open Read to read books in your browser. Your place is saved between devices.</div></li>
+    </ul>
+  </div>
+
   <h2>// tips</h2>
   <div class="box">
     <ul class="tips">
       <li><div>On a phone or TV, install the <b>Jellyfin</b> app and enter this server address:<br><code id="jf-addr"></code></div></li>
-      <li><div>Requests usually show up in Jellyfin within a few hours to a day.</div></li>
+      <li><div>To watch on a TV, mirror your phone's screen with AirPlay or Chromecast. For better quality, install Tailscale and the Jellyfin app on the TV itself (Apple TV, Google TV, Android TV).</div></li>
+      <li><div>Requests usually show up in Jellyfin within 15 minutes.</div></li>
+      <li><div>You can request up to 5 movies and 5 shows per week. Each season of a show counts as one.</div></li>
       <li><div>If an app won't load, check that Tailscale is switched on.</div></li>
     </ul>
+  </div>
+
+  <h2>// privacy</h2>
+  <div class="box">
+    <p class="note">Other people using VAULT can't see what you watch, read or request. As the admin, I can see what everyone requests. I have no reason to look, but I want you to know it's visible.</p>
   </div>
 </main>
 <script>
