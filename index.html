@@ -82,19 +82,19 @@
   </div>
 
   <div class="apps">
-    <a class="app" href="https://watch.rusu.fyi/">
+    <a class="app" href="https://jellyfin.rusu.fyi/">
       <span class="icon">▶</span>
-      <span><div class="name">watch</div><div class="desc">watch.rusu.fyi · Jellyfin: stream movies and shows</div></span>
+      <span><div class="name">watch</div><div class="desc">jellyfin.rusu.fyi · stream movies and shows</div></span>
       <span class="arrow">→</span>
     </a>
-    <a class="app" href="https://request.rusu.fyi/">
+    <a class="app" href="https://seerr.rusu.fyi/">
       <span class="icon">+</span>
-      <span><div class="name">request</div><div class="desc">request.rusu.fyi · Seerr: ask for a movie or show to be added</div></span>
+      <span><div class="name">request</div><div class="desc">seerr.rusu.fyi · ask for a movie or show to be added</div></span>
       <span class="arrow">→</span>
     </a>
-    <a class="app" href="https://read.rusu.fyi/">
+    <a class="app" href="https://kavita.rusu.fyi/">
       <span class="icon">¶</span>
-      <span><div class="name">read</div><div class="desc">read.rusu.fyi · Kavita: books and comics</div></span>
+      <span><div class="name">read</div><div class="desc">kavita.rusu.fyi · books and comics</div></span>
       <span class="arrow">→</span>
     </a>
   </div>
@@ -126,7 +126,7 @@
   <h2>// tips</h2>
   <div class="box">
     <ul class="tips">
-      <li><div>On a phone or TV, install the <b>Jellyfin</b> app and enter this server address:<br><code>https://watch.rusu.fyi</code></div></li>
+      <li><div>On a phone or TV, install the <b>Jellyfin</b> app and enter this server address:<br><code>https://jellyfin.rusu.fyi</code></div></li>
       <li><div>To watch on a TV, mirror your phone's screen with AirPlay or Chromecast. For better quality, install Tailscale and the Jellyfin app on the TV itself (Apple TV, Google TV, Android TV).</div></li>
       <li><div>Requests usually show up in Jellyfin within 15 minutes.</div></li>
       <li><div>You can request up to 5 movies and 5 shows per week. Each season of a show counts as one.</div></li>
@@ -152,7 +152,7 @@
     box.className = "status"; tag.textContent = "[ .. ]"; text.textContent = "Checking your connection…";
     again.hidden = true;
     try {
-      await fetch("https://watch.rusu.fyi/health", { mode: "no-cors", cache: "no-store", signal: AbortSignal.timeout(5000) });
+      await fetch("https://jellyfin.rusu.fyi/health", { mode: "no-cors", cache: "no-store", signal: AbortSignal.timeout(5000) });
       box.className = "status ok"; tag.textContent = "[ ok ]"; text.textContent = "Connected. Pick an app below.";
     } catch {
       box.className = "status off"; tag.textContent = "[ !! ]";
