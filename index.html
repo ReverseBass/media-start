@@ -11,7 +11,7 @@
   /* Same palette as the welcome email (apps/onboard in the homelab repo). */
   :root {
     --bg: #0b0d10; --card: #12151a; --line: #23272e; --text: #e6edf3; --muted: #7d8590;
-    --green: #3fb950; --green-bg: #0f2417; --amber: #d29922; --amber-bg: #2a2112;
+    --green: #3fb950; --green-bg: #0f2417; --amber: #d29922; --amber-bg: #2a2112; --red: #f85149;
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   }
   * { box-sizing: border-box; }
@@ -65,6 +65,25 @@
   .note { margin: 0; color: var(--muted); }
   ul.tips li::before { content: "+"; color: var(--green); flex: none; width: 12px; }
   a { color: var(--text); }
+  button.danger, dialog button {
+    font: inherit; cursor: pointer; color: var(--muted); background: none;
+    border: 1px solid var(--line); border-radius: 6px; padding: 6px 14px;
+  }
+  button.danger { color: var(--red); border-color: var(--red); }
+  .box button.danger { margin-top: 14px; }
+  dialog button:focus-visible, button.danger:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+  dialog {
+    width: min(420px, calc(100vw - 32px)); padding: 20px; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); border-radius: 10px; font: 14px/1.7 var(--mono);
+  }
+  dialog::backdrop { background: rgba(0, 0, 0, .7); }
+  dialog h3 { margin: 0 0 8px; font-size: 16px; }
+  dialog label { display: block; margin: 14px 0 0; color: var(--muted); }
+  dialog input {
+    display: block; width: 100%; margin-top: 4px; font: inherit; color: var(--text); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px;
+  }
+  dialog .actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
   code {
     font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line);
     padding: 1px 6px; border-radius: 4px; word-break: break-all;
@@ -138,6 +157,25 @@
   <div class="box">
     <p class="note">Other users can't see what you watch, read or request, and you only get emails about your own requests (when they're ready to watch). As the admin, I can see what you watch, read and request.</p>
   </div>
+
+  <h2>// delete my account</h2>
+  <div class="box">
+    <p class="note">Removes your account from everything: Jellyfin, Seerr, Kavita and your Tailscale access. You need to be connected to Tailscale.</p>
+    <button type="button" class="danger" id="delete-open">Delete my account</button>
+  </div>
+
+  <dialog id="delete-dialog">
+    <form method="post" action="https://account.rusu.fyi/delete">
+      <h3>Delete my account</h3>
+      <p class="note">This deletes your watch history, requests, reading progress and access. It can't be undone.</p>
+      <label>Username <input type="text" name="username" autocomplete="username" required></label>
+      <label>Password <input type="password" name="password" autocomplete="current-password" required></label>
+      <div class="actions">
+        <button type="button" id="delete-cancel">Cancel</button>
+        <button type="submit" class="danger">Delete my account</button>
+      </div>
+    </form>
+  </dialog>
 </main>
 <script>
 
@@ -162,6 +200,10 @@
   }
   again.addEventListener("click", check);
   check();
+
+  const dialog = document.getElementById("delete-dialog");
+  document.getElementById("delete-open").addEventListener("click", () => dialog.showModal());
+  document.getElementById("delete-cancel").addEventListener("click", () => dialog.close());
 </script>
 </body>
 </html>
