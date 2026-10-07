@@ -145,6 +145,20 @@
     <p class="note">Other users can't see what you watch, read or request, and you only get emails about your own requests (when they're ready to watch). As the admin, I can see what you watch, read and request.</p>
   </div>
 
+  <h2>// what's the stack? (nerd stuff)</h2>
+  <div class="box">
+    <ul class="tips">
+      <li><div><b>One box:</b> a Linux PC at my place running everything in Docker Compose.</div></li>
+      <li><div><b>Network:</b> nothing is open to the internet. Tailscale shares the box with you, and Caddy serves each app at its own <code>*.rusu.fyi</code> address. Caddy checks your Tailscale login to decide which apps you can open.</div></li>
+      <li><div><b>Watch:</b> Jellyfin, with an NVIDIA GPU for transcoding.</div></li>
+      <li><div><b>Request:</b> Seerr passes requests to Radarr (movies) and Sonarr (shows), which find the movie or show, then Jellyfin picks it up. Bazarr adds subtitles. The media apps' internet traffic goes out through a VPN.</div></li>
+      <li><div><b>Read:</b> Kavita, with Calibre-Web Automated importing and tagging books.</div></li>
+      <li><div><b>Accounts and emails:</b> a small homemade tool called Onboard creates your logins, sends the emails and runs the manage-account page.</div></li>
+      <li><div><b>This page:</b> plain HTML on GitHub Pages.</div></li>
+      <li><div><b>Full disclaimer:</b> this whole thing is heavily vibe coded with Claude. It works, but expect the odd rough edge.</div></li>
+    </ul>
+  </div>
+
   <h2>// manage or delete account</h2>
   <div class="box">
     <p class="note">Choose which emails you get, or delete your account from everything (Jellyfin, Seerr, Kavita and your Tailscale access). You need to be connected to Tailscale.</p>
